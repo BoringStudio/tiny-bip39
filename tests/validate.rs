@@ -4,6 +4,8 @@ use bip39::{Language, Mnemonic, MnemonicType};
 
 fn validate_language(lang: Language) {
     let types = &[
+        MnemonicType::Words6,
+        MnemonicType::Words9,
         MnemonicType::Words12,
         MnemonicType::Words15,
         MnemonicType::Words18,
@@ -19,6 +21,20 @@ fn validate_language(lang: Language) {
             assert_eq!(m1.entropy(), m2.entropy());
         }
     }
+}
+
+#[test]
+fn validate_6_english() {
+    let phrase = "book carpet harbor medal blast auction";
+
+    let _ = Mnemonic::from_phrase(phrase, Language::English).expect("Can create a Mnemonic");
+}
+
+#[test]
+fn validate_9_english() {
+    let phrase = "push couple awkward credit easily split behind conduct build";
+
+    let _ = Mnemonic::from_phrase(phrase, Language::English).expect("Can create a Mnemonic");
 }
 
 #[test]

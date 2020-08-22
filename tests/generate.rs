@@ -14,7 +14,17 @@ fn test_word_count(expected_word_count: usize) {
     let seed = Seed::new(&mnemonic, "");
     let seed_bytes: &[u8] = seed.as_bytes();
 
-    assert!(seed_bytes.len() == 64);
+    assert_eq!(seed_bytes.len(), 64);
+}
+
+#[test]
+fn generate_6_english() {
+    test_word_count(6);
+}
+
+#[test]
+fn generate_9_english() {
+    test_word_count(9);
 }
 
 #[test]

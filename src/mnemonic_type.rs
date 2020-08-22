@@ -1,6 +1,6 @@
-use std::fmt;
-use failure::Error;
 use crate::error::ErrorKind;
+use failure::Error;
+use std::fmt;
 
 const ENTROPY_OFFSET: usize = 8;
 
@@ -32,6 +32,8 @@ const ENTROPY_OFFSET: usize = 8;
 #[derive(Debug, Copy, Clone)]
 pub enum MnemonicType {
     //  ... = (entropy_bits << ...)   | checksum_bits
+    Words6 = (64 << ENTROPY_OFFSET) | 2,
+    Words9 = (96 << ENTROPY_OFFSET) | 3,
     Words12 = (128 << ENTROPY_OFFSET) | 4,
     Words15 = (160 << ENTROPY_OFFSET) | 5,
     Words18 = (192 << ENTROPY_OFFSET) | 6,
@@ -53,6 +55,8 @@ impl MnemonicType {
     /// ```
     pub fn for_word_count(size: usize) -> Result<MnemonicType, Error> {
         let mnemonic_type = match size {
+            6 => MnemonicType::Words6,
+            9 => MnemonicType::Words9,
             12 => MnemonicType::Words12,
             15 => MnemonicType::Words15,
             18 => MnemonicType::Words18,
@@ -77,6 +81,8 @@ impl MnemonicType {
     /// ```
     pub fn for_key_size(size: usize) -> Result<MnemonicType, Error> {
         let mnemonic_type = match size {
+            64 => MnemonicType::Words6,
+            96 => MnemonicType::Words9,
             128 => MnemonicType::Words12,
             160 => MnemonicType::Words15,
             192 => MnemonicType::Words18,
@@ -205,6 +211,8 @@ mod test {
 
     #[test]
     fn word_count() {
+        assert_eq!(MnemonicType::Words6.word_count(), 6);
+        assert_eq!(MnemonicType::Words9.word_count(), 9);
         assert_eq!(MnemonicType::Words12.word_count(), 12);
         assert_eq!(MnemonicType::Words15.word_count(), 15);
         assert_eq!(MnemonicType::Words18.word_count(), 18);
@@ -214,6 +222,8 @@ mod test {
 
     #[test]
     fn entropy_bits() {
+        assert_eq!(MnemonicType::Words6.entropy_bits(), 64);
+        assert_eq!(MnemonicType::Words9.entropy_bits(), 96);
         assert_eq!(MnemonicType::Words12.entropy_bits(), 128);
         assert_eq!(MnemonicType::Words15.entropy_bits(), 160);
         assert_eq!(MnemonicType::Words18.entropy_bits(), 192);
@@ -223,6 +233,8 @@ mod test {
 
     #[test]
     fn checksum_bits() {
+        assert_eq!(MnemonicType::Words6.checksum_bits(), 2);
+        assert_eq!(MnemonicType::Words9.checksum_bits(), 3);
         assert_eq!(MnemonicType::Words12.checksum_bits(), 4);
         assert_eq!(MnemonicType::Words15.checksum_bits(), 5);
         assert_eq!(MnemonicType::Words18.checksum_bits(), 6);

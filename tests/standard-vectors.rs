@@ -52,6 +52,70 @@ macro_rules! tests {
 }
 
 tests! {
+    // Tests for 6 words
+    [
+        "0000000000000000",
+        "abandon abandon abandon abandon abandon able",
+        "5abb87daba4bee09a4a359b4dd21e5d5aa9ce51291a315f8ef966f87af76e7d71a9359b2333c22f2800bda7ca5d7e764e81bf8caeb1437b669d6c604267c30f3",
+        "xprv9s21ZrQH143K4AJECU2KMNUfMKAKMMrWtkQhwm5pH2dZMh4uYdKyk4fyR5NMr6pN8BhYZtYPqC5ZDXLkykY51eWEXn3SsPJcxSAGeX9dDLm"
+    ],
+    [
+        "7f7f7f7f7f7f7f7f",
+        "legal winner thank year wave sausage",
+        "4d991a5038a9be0a39aee2c034281400da0077d9ee0446f1f4657fad14eb30cbab31bcf7d0bdb6963720b00070f24970c3f87cfcc84017bf51171501da686048",
+        "xprv9s21ZrQH143K4VCVaa8ejjmUi5Mgc4AgtDmw1PEnjM2CgZUSMAuZeVVuk166H98tkws3Ssuu5wjfJWYzaqMN7d6N9x68PkpBCJF9ayhPmAP"
+    ],
+    [
+        "8080808080808080",
+        "letter advice cage absurd amount dizzy",
+        "477c79f4839c4cc151989c7fa3473625cf32704a42fce5ae3da782f6f717fcdbdd0c70132db051d0d1b5e8dab584faac2b760d7bcbe4003ae4fea654a25b143a",
+        "xprv9s21ZrQH143K4LNN9re29wxLsHWwHy7B4DLhk1bAJjT1qHRMwmSy1Lkehew1tcuccpKF2qqVfnkE1mZWuJamTLSsYpkvC9Nx2Fftw7qbzTi"
+    ],
+    [
+        "ffffffffffffffff",
+        "zoo zoo zoo zoo zoo zebra",
+        "d9ff9908f44477debaff03415f3c2f2f94fa8f559d5cc8c8ad03842fa00edf39f47bac9af8901bab1a45c10e498cd29a453a994dccf6e4e99fc904110a5b41a8",
+        "xprv9s21ZrQH143K3sNZUdgVoMzVo4cV6E9QxjoXdPaexdV5S2ms4AjiKdywdKJNiC9UNa2H5VJXBEwPbyPYf26rSp9N9dhqHhmKQadrzHgc4KL"
+    ],
+    [
+        "caeb4efe34a8e91b",
+        "slab foil sauce harsh model misery",
+        "b857d44b9783882e5d8617403aad8ba35902c17c1d25667767d59870e8a7feb15e33b9830937d3e6c83f59ed3f6179d00373f74b5d93c00d4e589ab0eb2809f1",
+        "xprv9s21ZrQH143K3W6pqKXUEWuubKYXCGSFxDEP2749LDD9ShFyk4WhDRY1jdBVvH8qbKU2DVSSH7uTHxgugTEttSBDM6NN4bFeqnV5WpYWz4c"
+    ],
+
+    // Tests for 9 words
+    [
+        "000000000000000000000000",
+        "abandon abandon abandon abandon abandon abandon abandon abandon abandon",
+        "3f4cdef8cc9ec837ba5d136078edbc1186f8936f524ccf8af67c2d9952db96c40ea1d18c40345de0372743b7552e6444ca9c3f88df373d5e9db5a22d4cb7223e",
+        "xprv9s21ZrQH143K2R7YiCz5Lqs2D1ufmtZ9m2vDvHidPVCMy314dMBxLqzSY9SKFQMnU4CvhxZEWo26tWAVw9oyVzQBNdv4NdXjToCwU3LrAJZ"
+    ],
+    [
+        "7f7f7f7f7f7f7f7f7f7f7f7f",
+        "legal winner thank year wave sausage worth useful leisure",
+        "68f0e96d74485fa79abdfbb7ab777019794e37176b4bbce58b12e12d324d17da374d8ffb207687228758b4992ab82f508ddc1072b3125d455780f0ac71278e39",
+        "xprv9s21ZrQH143K44phypg6GauP4E9iU1gcL1hnx6ySefCdTfmSn2CXtXfhGxpVASH9jE83ncnRyYZ3yfkS8yzTpzeprcnv8xxo6sX9LM6AW64"
+    ],
+    [
+        "808080808080808080808080",
+        "letter advice cage absurd amount doctor acoustic avoid liar",
+        "7118fa8b46a8c5ea4876e093569be1e4d5b2fd67b48e065c2af22a7014423502cf3bd9e1b8576b3f666c4329557aac385ddb0ca6c3677ab8ab744df73292acd1",
+        "xprv9s21ZrQH143K4Eh2j6iQnoevBNvmQTNf4EomB2xsLDsUuTvdFnzPtocqFx22cLpH5Gshm3qBwMxZvSqZeaoredaC3DkF8iixAnzABdQcD2M"
+    ],
+    [
+        "ffffffffffffffffffffffff",
+        "zoo zoo zoo zoo zoo zoo zoo zoo zebra",
+        "0bf2dab30cceb437265a0522f0c3c3cb2f247d6c74eec433ec3b2bda4eb49ae0f76e723f13c582cc0ff1de24368f7fc06c3237b15b5c5e0149c8fc3ee6df975a",
+        "xprv9s21ZrQH143K37XCPJ4DB3KSJeYgsj6nYSeQg498VVznmc2ZGZuR2iqrJD2BVPfH8G7XHkRnHfphpwf1TMYYqVLA52SaJMoxKqiPapcTuAZ"
+    ],
+    [
+        "9a5491b8c952cede496c214a",
+        "olympic pig hotel naive coconut hundred certain loud enough",
+        "2ff4d28d34c0ee316ef79f245d03db28dac07ae532bff43f91ba15b56765f1c4617b72c9465285282a70e35fac86575b25ba90dbefe4efc5bf1df77f28abce9a",
+        "xprv9s21ZrQH143K2qWdu2jEqw4G2AaG7ez2FdzTehGvedivwt7pGAJoS3MYJUQLDx8g1qCr3szrHYAfEKNK5YfPLW7bmaQsn21j9vwkHVTBFWS"
+    ],
+
     // https://github.com/trezor/python-mnemonic/blob/master/vectors.json
     [
         "00000000000000000000000000000000",
