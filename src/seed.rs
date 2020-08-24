@@ -18,7 +18,7 @@ use unicode_normalization::UnicodeNormalization;
 /// [Seed]: ./seed/struct.Seed.html
 /// [Seed::as_bytes()]: ./seed/struct.Seed.html#method.as_bytes
 
-#[derive(Clone)]
+#[derive(Clone, Eq, PartialEq)]
 pub struct Seed {
     bytes: Vec<u8>,
 }
