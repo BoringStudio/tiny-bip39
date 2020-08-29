@@ -15,7 +15,7 @@ impl WordMap {
     pub fn get_bits(&self, word: &str) -> Result<Bits11, Error> {
         match self.inner.get(word) {
             Some(n) => Ok(*n),
-            None => Err(ErrorKind::InvalidWord)?,
+            None => Err(ErrorKind::InvalidWord.into()),
         }
     }
 }
@@ -26,13 +26,12 @@ impl WordList {
     }
 
     pub fn get_words_by_prefix(&self, prefix: &str) -> &[&'static str] {
-        let start = self.inner
-            .binary_search(&prefix)
-            .unwrap_or_else(|idx| idx);
-        let count = self.inner[start..].iter()
+        let start = self.inner.binary_search(&prefix).unwrap_or_else(|idx| idx);
+        let count = self.inner[start..]
+            .iter()
             .take_while(|word| word.starts_with(prefix))
             .count();
-    
+
         &self.inner[start..start + count]
     }
 }
@@ -218,7 +217,7 @@ mod test {
     fn words_by_prefix() {
         let wl = &lazy::WORDLIST_ENGLISH;
         let res = wl.get_words_by_prefix("woo");
-        assert_eq!(res, ["wood","wool"]);
+        assert_eq!(res, ["wood", "wool"]);
     }
 
     #[test]

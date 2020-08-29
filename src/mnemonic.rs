@@ -1,11 +1,11 @@
-use std::fmt;
-use failure::Error;
-use unicode_normalization::UnicodeNormalization;
 use crate::crypto::{gen_random_bytes, sha256_first_byte};
 use crate::error::ErrorKind;
 use crate::language::Language;
 use crate::mnemonic_type::MnemonicType;
 use crate::util::{checksum, BitWriter, IterExt};
+use failure::Error;
+use std::fmt;
+use unicode_normalization::UnicodeNormalization;
 
 /// The primary type in this crate, most tasks require creating or using one.
 ///
@@ -185,7 +185,7 @@ impl Mnemonic {
         // Preallocate enough space for the longest possible word list
         let mut bits = BitWriter::with_capacity(264);
 
-        for word in phrase.split(" ") {
+        for word in phrase.split(' ') {
             bits.push(wordmap.get_bits(&word)?);
         }
 
@@ -208,7 +208,7 @@ impl Mnemonic {
         let expected_checksum = checksum(checksum_byte, mtype.checksum_bits());
 
         if actual_checksum != expected_checksum {
-            Err(ErrorKind::InvalidChecksum)?;
+            return Err(ErrorKind::InvalidChecksum.into());
         }
 
         Ok(entropy)

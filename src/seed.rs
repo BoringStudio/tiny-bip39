@@ -1,7 +1,6 @@
 use crate::crypto::pbkdf2;
 use crate::mnemonic::Mnemonic;
 use std::fmt;
-use std::hash::{Hash, Hasher};
 use unicode_normalization::UnicodeNormalization;
 
 /// The secret value used to derive HD wallet addresses from a [`Mnemonic`][Mnemonic] phrase.
@@ -18,7 +17,7 @@ use unicode_normalization::UnicodeNormalization;
 /// [Seed]: ./seed/struct.Seed.html
 /// [Seed::as_bytes()]: ./seed/struct.Seed.html#method.as_bytes
 
-#[derive(Clone, Eq, PartialEq)]
+#[derive(Clone, Eq, PartialEq, Hash)]
 pub struct Seed {
     bytes: Vec<u8>,
 }
@@ -38,6 +37,11 @@ impl Seed {
     /// Get the seed value as a byte slice
     pub fn as_bytes(&self) -> &[u8] {
         &self.bytes
+    }
+
+    /// Convert seed into bytes
+    pub fn into_bytes(self) -> Vec<u8> {
+        self.bytes
     }
 }
 
@@ -78,12 +82,6 @@ impl fmt::UpperHex for Seed {
         }
 
         Ok(())
-    }
-}
-
-impl Hash for Seed {
-    fn hash<H: Hasher>(&self, state: &mut H) {
-        self.bytes.hash(state);
     }
 }
 
